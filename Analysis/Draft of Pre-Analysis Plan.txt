@@ -10,7 +10,7 @@ This study uses supervised learning because we have labeled data indicating whet
 
 Planned Models and Algorithms:
 We will experiment with the following models-
-Logistic Regression: As a simple yet effective classification approach, logistic regression will establish a baseline for performance.
+Logistic Regression: A simple classification approach to establish a baseline for performance.
 Random Forest Classifier: This model can handle structured features like presence of URLs, email length, and sender frequency while reducing overfitting.
 SVM with TF-IDF Vectorization: We will extract textual patterns from email bodies using TF-IDF to convert text into numerical features & use SVM to analyze textual features.
 
@@ -20,9 +20,13 @@ Accuracy: Overall classification correctness
 Precision & Recall: Important for phishing detection since false negatives (missed phishing emails) are riskier than false positives
 F1 Score: Balances precision and recall
 ROC-AUC Score: Measures overall classifier performance
-A high F1-score and AUC-ROC indicate a successful approach.
 
 Anticipated Weaknesses & Contingency Plans:
 Feature Engineering Challenges: Extracting meaningful features from text and URLs may be difficult. We will experiment with different NLP techniques.
 Data Quality Issues: Inconsistent timestamps, missing values, or encoding errors in emails may require cleaning.
-If our approach fails, we might discover that textual features alone are insufficient for classification, requiring a shift toward analyzing network-based features or metadata.
+
+Feature Engineering:
+We will use TF-IDF (Term Frequency-Inverse Document Frequency) to convert text into numerical vectors. This method captures the importance of words in the text while reducing the impact of common words (like "the" or "and") that appear frequently across all documents. We will also limit the number of features to 5000 to ensure that we're focusing on the most important terms, reducing dimensionality and computational overhead. The label column represents whether an email is phishing (1) or non-phishing (0), so there is no need for one-hot encoding here. The target variable is binary, making it suitable for classification tasks.
+
+Results:
+For results, we can use a variety of metrics like accuracy, precision, recall, F1 score, and ROC-AUC to evaluate the model, along with visualizations and feature importance analysis to provide a deeper understanding of how the model works.
