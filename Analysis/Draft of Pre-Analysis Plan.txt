@@ -1,0 +1,28 @@
+​​Pre-Analysis Plan
+Research Question:
+Can we accurately predict whether an email is phishing based on its content, metadata, and structural characteristics, and what indicators of phishing emails are evident based on the dataset?
+
+Observations in the Study:
+An observation in this study is a single email. Each email is represented as a row in the dataset, containing features such as its body text, subject line, sender, presence of URLs, and timestamp.
+
+Supervised or Unsupervised Learning? Classification or Regression?
+This study uses supervised learning because we have labeled data indicating whether an email is phishing (1) or not (0). The goal is to classify emails, making this a classification problem rather than regression.
+
+Planned Models and Algorithms:
+We will experiment with the following models-
+Logistic Regression: As a simple yet effective classification approach, logistic regression will establish a baseline for performance.
+Random Forest Classifier: This model can handle structured features like presence of URLs, email length, and sender frequency while reducing overfitting.
+SVM with TF-IDF Vectorization: We will extract textual patterns from email bodies using TF-IDF to convert text into numerical features & use SVM to analyze textual features.
+
+Evaluating Success:
+The approach "works" if the model achieves high predictive accuracy without significant overfitting. Success will be measured using:
+Accuracy: Overall classification correctness
+Precision & Recall: Important for phishing detection since false negatives (missed phishing emails) are riskier than false positives
+F1 Score: Balances precision and recall
+ROC-AUC Score: Measures overall classifier performance
+A high F1-score and AUC-ROC indicate a successful approach.
+
+Anticipated Weaknesses & Contingency Plans:
+Feature Engineering Challenges: Extracting meaningful features from text and URLs may be difficult. We will experiment with different NLP techniques.
+Data Quality Issues: Inconsistent timestamps, missing values, or encoding errors in emails may require cleaning.
+If our approach fails, we might discover that textual features alone are insufficient for classification, requiring a shift toward analyzing network-based features or metadata.
