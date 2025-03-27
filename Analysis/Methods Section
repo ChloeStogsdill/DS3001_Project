@@ -1,33 +1,30 @@
 Methods Section
 
-Research Question:
-Can we accurately predict whether an email is phishing based on its content, metadata, and structural characteristics, and what indicators of phishing emails are evident based on the dataset?
-
-Observations in the Study:
-An observation in this study is a single email. Each email is represented as a row in the dataset, containing features such as its body text, subject line, sender, presence of URLs, and timestamp.
-
-Supervised or Unsupervised Learning? Classification or Regression?
-This study uses supervised learning because we have labeled data indicating whether an email is phishing (1) or not (0). The goal is to classify emails, making this a classification problem rather than regression.
-
-Planned Models and Algorithms:
-We will experiment with the following models-
-Logistic Regression: A simple classification approach to establish a baseline for performance.
-Random Forest Classifier: This model can handle structured features like presence of URLs, email length, and sender frequency while reducing overfitting.
-SVM with TF-IDF Vectorization: We will extract textual patterns from email bodies using TF-IDF to convert text into numerical features & use SVM to analyze textual features.
-
-Evaluating Success:
-The approach "works" if the model achieves high predictive accuracy without significant overfitting. Success will be measured using:
-Accuracy: Overall classification correctness
-Precision & Recall: Important for phishing detection since false negatives (missed phishing emails) are riskier than false positives
-F1 Score: Balances precision and recall
-ROC-AUC Score: Measures overall classifier performance
-
-Anticipated Weaknesses & Contingency Plans:
-Feature Engineering Challenges: Extracting meaningful features from text and URLs may be difficult. We will experiment with different NLP techniques.
-Data Quality Issues: Inconsistent timestamps, missing values, or encoding errors in emails may require cleaning.
-
-Feature Engineering:
-We will use TF-IDF (Term Frequency-Inverse Document Frequency) to convert text into numerical vectors. This method captures the importance of words in the text while reducing the impact of common words (like "the" or "and") that appear frequently across all documents. We will also limit the number of features to 5000 to ensure that we're focusing on the most important terms, reducing dimensionality and computational overhead. The label column represents whether an email is phishing (1) or non-phishing (0), so there is no need for one-hot encoding here. The target variable is binary, making it suitable for classification tasks.
-
-Results:
-For results, we can use a variety of metrics like accuracy, precision, recall, F1 score, and ROC-AUC to evaluate the model, along with visualizations and feature importance analysis to provide a deeper understanding of how the model works.
+  We decided to use a dataset from Kaggle, TREC_06, that included information regarding around 
+15,000 phishing emails. Each observation is a single email, with each email also represented as a row 
+that contains relevant information such as body text, subject line, sender, presence of URLs, and 
+timestamp. Our target binary variable is whether an email is labeled as phishing (1) or not (0), 
+so this study will use supervised learning. While this variable is technically numeric, the goal
+is to classify emails as either phishing or not, so we will create a classification models rather than
+regression models. 
+  We will experiment with models including Logistic Regression, Random Forest Classifier, and SVM with
+TF-IDF Vectorization--each of which serves a different purpose. Logistic Regression is a simple
+classification approach that will estable a baseline for prediction performance. Random Forest 
+Classifier can handle structured features like presence of URLs, email length, and sender frequency
+while simultaneously reducing overfitting. SVM with TF-IDF Vectorization allows us to extract textural
+patterns from email bodies using Term Frequency-Inverse Document Frequency (TF-IDF) to convert text 
+into numerical features, like the email body, subject line, and URLs, and then use SVM to analyze 
+those textural features. This aids in capturing the importance of specific words within the context of 
+the email while reducing the impact of more common words including "and", "in", and "the". 
+  We anticipate that extracting those meaningful features from text will be difficult, however we plan
+on experimenting with different NLP techniques such as stemming, lemmatization, and n-grams.
+Furthermore, the data may require additional cleaning to fix inconsistent timestamps, missing values,
+or encoding errors in emails.
+  We will evaluate our approach depending on whether the model achieves high predictive accuracy without
+significant overfitting. Success of the model was measured through accuracy (overall classification 
+correctness), precision and recall (missed phishing email classifications), F1 score (balance 
+between precision and recall), and ROC-AUC score (measure of overall classifier performance).
+Precision and recall is a particularly important for phishing detection since false negatives are 
+riskier than false positives, as these emails can contain potentially dangerous links that steal
+pertinent receiver information. Overall, visualizations and feature importance analysis will
+provide a deeper understanding of how our model works.
